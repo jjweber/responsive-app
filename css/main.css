@@ -1,0 +1,183 @@
+.wrapper, #searchBox, #aboutContent p, #contactContent p {
+  margin-left: auto;
+  margin-right: auto; }
+
+html body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #222;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto; }
+
+.wrapper {
+  width: 85%; }
+
+header {
+  background: url("../assets/marvelHeroes.png") no-repeat center;
+  background-size: cover;
+  border: 2px solid #222;
+  height: 350px; }
+
+.logo {
+  display: inline-block; }
+  .logo img {
+    width: 45px;
+    display: block;
+    float: left; }
+  .logo h1 {
+    color: #EEE;
+    display: block;
+    float: left;
+    margin-top: 0; }
+
+nav {
+  margin-top: 0;
+  float: right; }
+
+nav ul {
+  text-align: right; }
+  nav ul li {
+    display: inline-block;
+    margin: 0 auto;
+    padding-right: 10px; }
+    nav ul li a {
+      text-decoration: none;
+      color: #EEE;
+      padding: 0; }
+
+nav ul li a:hover {
+  border: 1px solid #EEE;
+  color: #FFDF00; }
+
+.active {
+  color: #FFDF00; }
+
+/*MEDIA QUERY*/
+@media only screen and (max-width: 430px) {
+  nav {
+    margin-top: 0;
+    float: right; }
+  nav ul {
+    text-align: right; }
+    nav ul li {
+      display: block;
+      margin: 0 auto; } }
+
+footer {
+  background-color: #222;
+  color: #EEE;
+  text-align: center;
+  height: 120px;
+  margin-top: 50px; }
+  footer p {
+    padding: 50px 0; }
+
+#searchBox {
+  text-align: center;
+  width: 80%;
+  height: 30px;
+  margin-top: 50px; }
+  #searchBox p {
+    background-color: #222;
+    color: #EEE;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 0;
+    padding: 0 0 0 0; }
+
+.js-search-field {
+  width: 100%;
+  height: 100%;
+  position: relative; }
+
+.js-search-button {
+  position: absolute;
+  padding: .5em 1em;
+  font-size: .5em;
+  background-color: #EEE;
+  color: #222;
+  height: 30px;
+  border: none;
+  margin: 5px auto; }
+  .js-search-buttonhover {
+    background-color: #EEE; }
+
+#homeContent {
+  min-height: calc(100vh - 70px);
+  padding: 20px;
+  text-align: center; }
+
+#homeContent h1 {
+  background-color: #222;
+  color: #EEE;
+  text-align: left;
+  padding-left: 10px;
+  max-width: 50%; }
+
+#homeContent ul {
+  margin: 0 auto 100px auto;
+  padding: 0;
+  display: block; }
+  #homeContent ul li {
+    display: inline-block;
+    vertical-align: top;
+    padding: 20px;
+    margin: 40px 0;
+    width: 300px;
+    height: 330px; }
+    #homeContent ul li h3 {
+      background-color: #222;
+      color: #FFDF00;
+      padding: 20px 10px;
+      margin-top: -6px;
+      display: block;
+      text-align: center;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap; }
+
+li img {
+  width: 100%;
+  height: 100%; }
+
+#homeContent a {
+  background-color: #FFDF00;
+  color: #222;
+  text-decoration: none;
+  padding: 20px 10px;
+  margin-top: 50px;
+  margin-bottom: 20px; }
+
+#aboutContent {
+  min-height: calc(50vh - 70px);
+  padding: 20px;
+  text-align: center; }
+
+#aboutContent h1 {
+  background-color: #222;
+  color: #EEE;
+  text-align: left;
+  padding-left: 10px;
+  max-width: 50%; }
+
+#aboutContent p {
+  width: 65%; }
+
+#contactContent {
+  min-height: calc(50vh - 70px);
+  padding: 20px;
+  text-align: center; }
+
+#contactContent h1 {
+  background-color: #222;
+  color: #EEE;
+  text-align: left;
+  padding-left: 10px;
+  max-width: 50%; }
+
+#contactContent p {
+  width: 65%; }
+  #contactContent p span {
+    color: #FFDF00; }

@@ -1,0 +1,18 @@
+#aboutContent {
+  min-height: calc(50vh - 70px);
+  padding: $med-amount;
+  text-align: center;
+}
+
+#aboutContent h1 {
+  background-color: $primary-color;
+  color: $secondary-color;
+  text-align: left;
+  padding-left: $small-amount;
+  max-width: 50%;
+}
+
+#aboutContent p {
+  width: 65%;
+  @extend %auto-center;
+}

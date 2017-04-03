@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Marvel API Search App</title>
+    <link href="./css/main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <div class="wrapper">
+        <div class="logo">
+          <img src="./assets/shield.jpg" alt="">
+          <h1>Shield</h1>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+      <section id="aboutContent">
+        <div class="wrapper">
+          <h1>About</h1>
+          <p>
+            This search app was built for my DWS2 class.
+            It was built using sass, html, and javaScript.
+            Input the marvel character of your choice and the
+            app will display 10 random comicbook covers that
+            featured the searched character. The covers are retrieved
+            using a get request from <a href="https://marvel.com/">marvel.api</a>.
+            All content is property of marvel.
+          </p>
+        </div>
+      </section>
+      <footer>
+        <p>Built by Justin Weber for DWS2</p>
+      </footer>
+    <script src="./js/main.js"></script>
+  </body>
+</html>

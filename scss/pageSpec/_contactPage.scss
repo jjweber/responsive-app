@@ -1,0 +1,22 @@
+#contactContent {
+  min-height: calc(50vh - 70px);
+  padding: $med-amount;
+  text-align: center;
+}
+
+#contactContent h1 {
+  background-color: $primary-color;
+  color: $secondary-color;
+  text-align: left;
+  padding-left: $small-amount;
+  max-width: 50%;
+}
+
+#contactContent p {
+  width: 65%;
+  @extend %auto-center;
+
+  span {
+    color: $accent-color;
+  }
+}

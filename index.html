@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Marvel API Search App</title>
+    <link href="./css/main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <div class="wrapper">
+        <div class="logo">
+          <img src="./assets/shield.jpg" alt="">
+          <h1>Shield</h1>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div id="searchBox">
+          <p>Search for comics with your favorite marvel characters.</p>
+          <input id= "textarea" class="js-search-field" type="text" placeholder="e.g. Spider-man..." />
+          <button class="js-search-button">Search</button>
+        </div>
+      </div>
+    </header>
+      <section id="homeContent">
+        <div class="wrapper">
+          <h1>Results for comics featuring <span id="searchTitle"></span></h1>
+          <ul id="bookContainer" class="results">
+            <!-- This is where the results will display. -->
+          </ul>
+          <a href="https://marvel.com/">View more on Marvel</a>
+        </div>
+      </section>
+      <footer>
+        <p>Built by Justin Weber for DWS2</p>
+      </footer>
+    <script type="text/javascript" src="/js/main.js"></script>
+  </body>
+</html>
