@@ -90,7 +90,7 @@ function addBookInfoToPageFromUrl(url) {
         // Creating a variable to hold the comic covers url path with large size and adding the file type with .extention from data.
         var imgPath = comicInfo.images[0].path + '/standard_xlarge.' + comicInfo.images[0].extension;
         // Creating variable to hold the built img element.
-        var imgHtml = '<img src="' + imgPath + '"><br>'+ '<h3>' + comicInfo.title + '</h3>';
+        var imgHtml = '<img src="' + imgPath + '">'+ '<h3>' + comicInfo.title + '</h3>';
 
         // Creating variable to hold the new created li.
         var listItem = document.createElement('li');

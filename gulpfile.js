@@ -1,18 +1,21 @@
 var gulp = require('gulp')
 var sass = require('gulp-sass')
-//var api = require('marvel-api')
 var browserSync = require('browser-sync').create()
-/*var marvel = api.createClient ({
-  publicKey: 'e8c34778a471a5cc616278cd7f11145b',
-  privateKey: '99e98ed7426d3038539c0e719671cdab3dee48e0'
-});*/
+var postcss = require('gulp-postcss')
+var autoprefixer = require('autoprefixer')
+
 gulp.task('default', function() {
 
 })
 
 gulp.task('scss', function() {
+
+  var processors = [
+    autoprefixer({ browsers: ['last 2 versions']}),
+  ];
   return gulp.src('./scss/*.scss')
     .pipe(sass())
+    .pipe(postcss(processors))
     .pipe(gulp.dest('./css'))
     .pipe(browserSync.reload({
       stream:true
