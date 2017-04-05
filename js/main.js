@@ -25,9 +25,14 @@ window.addEventListener("keyup", function(e) {
 
 // Creating event listener that listens for the click of the search button.
 submit.addEventListener('click', function(e) {
-  // Calling my makeRequest function and passing it api url with perameters and apikey.
-  makeRequest(`https://gateway.marvel.com:443/v1/public/characters?apikey=${apiKey}&name=${searchField.value}&limit=10&offset=0`);
+  if (!searchField.value == "" ) {
+    // Calling my makeRequest function and passing it api url with perameters and apikey.
+    makeRequest(`https://gateway.marvel.com:443/v1/public/characters?apikey=${apiKey}&name=${searchField.value}&limit=10&offset=0`);
+  } else {
+    alert("Sorry, You left the input blank Please enter a name to search for!");
+  }
 })
+
 
 // Creating a function to make a request to get the default comics for onload event.
 function defaultRequest(url) {
