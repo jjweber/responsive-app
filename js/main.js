@@ -7,14 +7,64 @@ var apiKey = "89629247aa3c362dd969166b19dec207";
 // Defining a variable to hold the location of which page you are on.
 var page = document.location.pathname;
 
-// This is to prevent error about eventlistener when going to another page.
-if (page == "/index.html") {
-  // Creating event listener that listens for the click of the search button.
-  submit.addEventListener('click', function(e) {
-    // Calling my makeRequest function and passing it api url with perameters and apikey.
-    makeRequest(`https://gateway.marvel.com:443/v1/public/characters?apikey=${apiKey}&name=${searchField.value}&limit=10&offset=0`);
+// Creating on load event to add default comics to screen when page loads.
+function setup() {
+  defaultRequest(`https://gateway.marvel.com:443/v1/public/characters?apikey=${apiKey}&name=avengers&limit=10&offset=0`);
+}
+window.addEventListener("load", setup, true);
+
+
+// Creating a keyup event to handle a case where the user presses enter instead of clicking the button.
+window.addEventListener("keyup", function(e) {
+  document.getElementById("searchField");
+  event.preventDefault();
+  if (event.keyCode == 13) {
+    submit.click();
+  }
+});
+
+// Creating event listener that listens for the click of the search button.
+submit.addEventListener('click', function(e) {
+  // Calling my makeRequest function and passing it api url with perameters and apikey.
+  makeRequest(`https://gateway.marvel.com:443/v1/public/characters?apikey=${apiKey}&name=${searchField.value}&limit=10&offset=0`);
+})
+
+// Creating a function to make a request to get the default comics for onload event.
+function defaultRequest(url) {
+  var request = new XMLHttpRequest();
+  request.open('GET', url, true);
+
+  request.onload = function() {
+    if (request.status >= 200 && request.status < 400) {
+      var apiData = JSON.parse(request.responseText)
+      console.log(apiData.data.results);
+      renderDefault(apiData.data.results);
+    }
+    else {
+      console.log('response error', request);
+    }
+  }
+  request.onerror = function() {
+  console.log('connection error');
+}
+
+request.send();
+}
+
+// Creating function to display my default data to the screen.
+// Loops through each comic found and performs api call for each with addBookInfoToPageFromUrl function.
+function renderDefault(characters) {
+  characters.forEach( (character, index, array) => {
+    console.log(character.name);
+    // Creating for loop to add the comics found, but only display a max of 10.
+    for (var i = 0; i < character.comics.items.length && i < 10; i++) {
+      // To get comics it needs a character id. Calling function that will retrieve the comic covers
+      //from marvel api and passing it a url with the id and my apikey.
+      addBookInfoToPageFromUrl(`${character.comics.items[i].resourceURI}?apikey=${apiKey}`);
+    }
   })
 }
+
 
 // Creating a function to make a request and get data from marvel api.
 function makeRequest(url) {
@@ -29,9 +79,15 @@ function makeRequest(url) {
     if (request.status >= 200 && request.status < 400) {
       // Creating a variable to hold my parsed json data.
       var apiData = JSON.parse(request.responseText)
-      // Calling function to render results
-      renderPage(apiData.data.results);
-      document.getElementById("textarea").value="";
+      console.log(apiData.data.results);
+      if (apiData.data.results.length > 0) {
+        // Calling function to render results
+        renderPage(apiData.data.results);
+        document.getElementById("textarea").value="";
+      }
+      else {
+        alert("Sorry we couldn't find anything by that in the database. Please try something else or check the grammer!");
+      }
     }
     else {
       console.log('response error', request);
@@ -50,7 +106,7 @@ function renderPage(characters) {
   characters.forEach( (character, index, array) => {
     // Getting the h1 span by id and adding the searched name to it.
     document.getElementById('searchTitle').innerHTML = character.name;
-
+    console.log(character.name);
     // Creating for loop to add the comics found, but only display a max of 10.
     for (var i = 0; i < character.comics.items.length && i < 10; i++) {
       // To get comics it needs a character id. Calling function that will retrieve the comic covers
@@ -81,7 +137,7 @@ function addBookInfoToPageFromUrl(url) {
       // Creating a variable to hold my parsed json data.
       var comic = JSON.parse(request.responseText);
       // Creating variable to hold an array of all the comic covers
-      var comicInfo = comic.data.results[0]
+      var comicInfo = comic.data.results[0];
 
       console.log("Comic Info to build from: ", comicInfo);
 
