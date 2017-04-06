@@ -1,7 +1,7 @@
 // Variables
 var submit = document.querySelector('.js-search-button');
 var searchField = document.querySelector('.js-search-field');
-var resultEl = document.querySelector('.results');
+//var resultEl = document.querySelector('.results');
 var apiKey = "89629247aa3c362dd969166b19dec207";
 
 // Defining a variable to hold the location of which page you are on.
