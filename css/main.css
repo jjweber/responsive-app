@@ -1,4 +1,4 @@
-.wrapper, #searchBox, #aboutContent p, #contactContent p {
+.wrapper, #searchSection, #aboutContent p, #contactContent p {
   margin-left: auto;
   margin-right: auto; }
 
@@ -74,12 +74,12 @@ footer {
   footer p {
     padding: 50px 0; }
 
-#searchBox {
+#searchSection {
   text-align: center;
   width: 80%;
   height: 30px;
   margin-top: 50px; }
-  #searchBox p {
+  #searchSection p {
     background-color: #222;
     color: #EEE;
     text-align: left;
@@ -87,22 +87,53 @@ footer {
     margin-bottom: 0;
     padding: 0 0 0 0; }
 
+.js-search-field,
+.js-search-button,
+.search-wrapper {
+  position: relative;
+  padding: 10px; }
+
+.search-wrapper {
+  width: 500px;
+  margin: auto;
+  margin-top: 50px; }
+
 .js-search-field {
-  width: 100%;
-  height: 100%;
-  position: relative; }
+  width: 80%;
+  border: 1px solid #ccc;
+  outline: 0;
+  border-radius: 15px; }
+  .js-search-field .js-search-field:focus {
+    box-shadow: 0 0 15px 5px #b0e0ee;
+    border: 2px solid #bebede; }
 
 .js-search-button {
-  position: absolute;
-  padding: .5em 1em;
-  font-size: .5em;
-  background-color: #EEE;
-  color: #222;
-  height: 30px;
-  border: none;
-  margin: 5px auto; }
-  .js-search-buttonhover {
-    background-color: #EEE; }
+  border: 1px solid transparent;
+  background-color: transparent;
+  display: inline-block;
+  vertical-align: middle;
+  outline: 0;
+  cursor: pointer; }
+  .js-search-button:after {
+    content: "X";
+    display: block;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    background-color: #FA9595;
+    z-index: 1;
+    right: 35px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    padding: 2px;
+    border-radius: 50%;
+    text-align: center;
+    color: white;
+    font-weight: normal;
+    font-size: 12px;
+    box-shadow: 0 0 2px #E50F0F;
+    cursor: pointer; }
 
 #homeContent {
   min-height: calc(100vh - 70px);
