@@ -57,6 +57,14 @@ function defaultRequest(url) {
 request.send();
 }
 
+function convertToSecureUrl(urlToChange) {
+  var newUrl = urlToChange.replace("http", "https");
+
+  console.log("Altering url..", newUrl);
+
+  return newUrl;
+}
+
 // Creating function to display my default data to the screen.
 // Loops through each comic found and performs api call for each with addBookInfoToPageFromUrl function.
 function renderDefault(characters) {
@@ -66,7 +74,14 @@ function renderDefault(characters) {
     for (var i = 0; i < character.comics.items.length && i < 10; i++) {
       // To get comics it needs a character id. Calling function that will retrieve the comic covers
       //from marvel api and passing it a url with the id and my apikey.
-      addBookInfoToPageFromUrl(`${character.comics.items[i].resourceURI}?apikey=${apiKey}`);
+      var bookInfoUrl = character.comics.items[i].resourceURI;
+      console.log("bookInfoUrl before changing url: ", bookInfoUrl);
+
+      var newBookUrl = convertToSecureUrl(bookInfoUrl);
+
+      console.log("bookInfoUrl after changing url: ", bookInfoUrl);
+
+      addBookInfoToPageFromUrl(`${bookInfoUrl}?apikey=${apiKey}`);
     }
   })
 }
