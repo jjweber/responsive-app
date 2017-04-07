@@ -67,11 +67,11 @@ function renderDefault(characters) {
       // To get comics it needs a character id. Calling function that will retrieve the comic covers
       //from marvel api and passing it a url with the id and my apikey.
       var bookInfoUrl = character.comics.items[i].resourceURI;
-      console.log("bookInfoUrl before changing url: ", bookInfoUrl);
+      console.log("NEW bookInfoUrl before changing url: ", bookInfoUrl);
 
       var newBookUrl = bookInfoUrl.replace("http", "https");
 
-      console.log("bookInfoUrl after changing url: ", newBookUrl);
+      console.log("NEW bookInfoUrl after changing url: ", newBookUrl);
 
       addBookInfoToPageFromUrl(`${newBookUrl}?apikey=${apiKey}`);
     }
