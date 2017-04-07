@@ -30,6 +30,7 @@ submit.addEventListener('click', function(e) {
     makeRequest(`https://gateway.marvel.com:443/v1/public/characters?apikey=${apiKey}&name=${searchField.value}&limit=10&offset=0`);
   } else {
     alert("Sorry, You left the input blank Please enter a name to search for!");
+    searchField.focus();
   }
 })
 
@@ -92,6 +93,7 @@ function makeRequest(url) {
       }
       else {
         alert("Sorry we couldn't find anything by that in the database. Please try something else or check the grammer!");
+        searchField.focus();
       }
     }
     else {

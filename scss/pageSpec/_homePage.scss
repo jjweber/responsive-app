@@ -1,32 +1,12 @@
-/*#searchSection {
-  text-align: center;
-  width: 80%;
-  height: 30px;
-  margin-top: $large-amount;
-  @extend %auto-center;
-
-  p {
-    background-color: $primary-color;
-    color: $secondary-color;
-    text-align: left;
-    width: 100%;
-    margin-bottom: 0;
-    padding: 0 0 0 0;
-  }
-}
-*/
-
-.js-search-field,
-.js-search-button,
-.search-wrapper,
-.search-wrapper p {
+.js-search-field, .js-search-button,
+.search-wrapper, .search-wrapper p {
   position: relative;
   padding: $small-amount;
 }
 
 .search-wrapper {
   text-align: center;
-  width: 80%;
+  width: 60%;
   margin-top: $large-amount;
   @extend %auto-center;
 
@@ -45,9 +25,9 @@
 	border: 1px solid #ccc;
   outline: 0;
 
-  .js-search-field:focus {
+  &:focus {
 	box-shadow: 0 0 15px 5px #b0e0ee;
-	border: 2px solid #bebede;
+	border: 1px solid #bebede;
   }
 }
 
@@ -62,53 +42,22 @@
 	background-color: transparent;
   position: absolute;
   bottom: 10px;
-  right: -10px;
+  right: -12px;
   padding: 0 20px;
+  transition-duration: 0.4s;
   cursor: pointer;
   //transition: border-radius .5s, background-color .5s;
   //@include brs(0,1em,1em,0);
 
-/*
-  &:after {
-  	content: url('../assets/search.png');
-  	display: block;
-  	width: 15px;
-  	height: 15px;
-  	position: absolute;
-  	background-color: #FA9595;
-  	z-index:1;
-  	right: 35px;
-  	top: 0;
-  	bottom: 0;
-  	margin: auto;
-  	padding: 2px;
-  	border-radius: 50%;
-  	text-align: center;
-  	color: white;
-  	font-weight: normal;
-  	font-size: 12px;
-  	box-shadow: 0 0 2px #E50F0F;
-  	cursor: pointer;
+  &:hover {
+    background-color: #0d3e6a; /* DarkBlue */
+    color: white;
   }
-  */
-}
 
-#homeContent {
-  min-height: calc(100vh - 70px);
-  text-align: center;
-}
-
-#homeContent h1 {
-  background-color: $primary-color;
-  color: $secondary-color;
-  text-align: left;
-  padding-left: $small-amount;
-  max-width: 50%;
 }
 
 #homeContent ul {
-
-  margin: 0 auto 100px auto;
+  margin: 0 auto 130px auto;
   padding: 0;
   list-style-type: none;
   display: grid;
@@ -144,4 +93,16 @@ li img {
   padding: $med-amount $small-amount;
   margin-top: $large-amount;
   margin-bottom: $med-amount;
+}
+
+@media only screen and (max-width : 720px){
+
+}
+
+@media only screen and (min-width : 720px) and (max-width : 1050px){
+
+}
+
+@media only screen and (min-width : 1050px){
+
 }
