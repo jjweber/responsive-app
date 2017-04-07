@@ -62,16 +62,15 @@ request.send();
 function renderDefault(characters) {
   characters.forEach( (character, index, array) => {
     console.log(character.name);
+
+    var bookInfoUrl = "";
+    var newBookUrl = "";
     // Creating for loop to add the comics found, but only display a max of 10.
     for (var i = 0; i < character.comics.items.length && i < 10; i++) {
       // To get comics it needs a character id. Calling function that will retrieve the comic covers
       //from marvel api and passing it a url with the id and my apikey.
-      var bookInfoUrl = character.comics.items[i].resourceURI;
-      console.log("NEW bookInfoUrl before changing url: ", bookInfoUrl);
-
-      var newBookUrl = bookInfoUrl.replace("http", "https");
-
-      console.log("NEW bookInfoUrl after changing url: ", newBookUrl);
+      bookInfoUrl = character.comics.items[i].resourceURI;
+      newBookUrl = bookInfoUrl.replace("http", "https");
 
       addBookInfoToPageFromUrl(`${newBookUrl}?apikey=${apiKey}`);
     }
@@ -125,7 +124,11 @@ function renderPage(characters) {
     for (var i = 0; i < character.comics.items.length && i < 10; i++) {
       // To get comics it needs a character id. Calling function that will retrieve the comic covers
       //from marvel api and passing it a url with the id and my apikey.
-      addBookInfoToPageFromUrl(`${character.comics.items[i].resourceURI}?apikey=${apiKey}`);
+
+      bookInfoUrl = character.comics.items[i].resourceURI;
+      newBookUrl = bookInfoUrl.replace("http", "https");
+
+      addBookInfoToPageFromUrl(`${newBookUrl}?apikey=${apiKey}`);
     }
   })
 }
