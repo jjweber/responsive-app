@@ -57,14 +57,6 @@ function defaultRequest(url) {
 request.send();
 }
 
-function convertToSecureUrl(urlToChange) {
-  var newUrl = urlToChange.replace("http", "https");
-
-  console.log("Altering url..", newUrl);
-
-  return newUrl;
-}
-
 // Creating function to display my default data to the screen.
 // Loops through each comic found and performs api call for each with addBookInfoToPageFromUrl function.
 function renderDefault(characters) {
@@ -77,11 +69,11 @@ function renderDefault(characters) {
       var bookInfoUrl = character.comics.items[i].resourceURI;
       console.log("bookInfoUrl before changing url: ", bookInfoUrl);
 
-      var newBookUrl = convertToSecureUrl(bookInfoUrl);
+      var newBookUrl = bookInfoUrl.replace("http", "https");
 
-      console.log("bookInfoUrl after changing url: ", bookInfoUrl);
+      console.log("bookInfoUrl after changing url: ", newBookUrl);
 
-      addBookInfoToPageFromUrl(`${bookInfoUrl}?apikey=${apiKey}`);
+      addBookInfoToPageFromUrl(`${newBookUrl}?apikey=${apiKey}`);
     }
   })
 }
