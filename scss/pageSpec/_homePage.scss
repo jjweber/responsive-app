@@ -94,14 +94,44 @@ li img {
   margin-bottom: $med-amount;
 }
 
-@media only screen and (max-width : 720px){
-
+.hamburger-menu {
+  display: none;
+  background: yellow;
+  height: 50px;
 }
 
-@media only screen and (min-width : 720px) and (max-width : 1050px){
 
+@media only screen and (max-width : 520px){
+  body {
+    background-color: yellow;
+  }
+
+  ul {
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: block;
+  }
+
+  ul.nav > li {
+    float: left;
+    display: block;
+    width: 100%;
+  }
+}
+
+/*
+@media only screen and (min-width : 720px) and (max-width : 1050px){
+  body {
+    background-color: blue;
+  }
 }
 
 @media only screen and (min-width : 1050px){
-
+  body {
+    background-color: green;
+  }
 }
+
+*/

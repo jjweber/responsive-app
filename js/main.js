@@ -9,7 +9,7 @@ var page = document.location.pathname;
 
 // Creating on load event to add default comics to screen when page loads.
 function setup() {
-  defaultRequest(`https://gateway.marvel.com:443/v1/public/characters?apikey=${apiKey}&name=avengers&limit=10&offset=0`);
+  defaultRequest(`https:///gateway.marvel.com:443/v1/public/characters?apikey=${apiKey}&name=avengers&limit=10&offset=0`);
 }
 window.addEventListener("load", setup, true);
 
@@ -24,15 +24,18 @@ window.addEventListener("keyup", function(e) {
 });
 
 // Creating event listener that listens for the click of the search button.
-submit.addEventListener('click', function(e) {
-  if (!searchField.value == "" ) {
-    // Calling my makeRequest function and passing it api url with perameters and apikey.
-    makeRequest(`https://gateway.marvel.com:443/v1/public/characters?apikey=${apiKey}&name=${searchField.value}&limit=10&offset=0`);
-  } else {
-    alert("Sorry, You left the input blank Please enter a name to search for!");
-    searchField.focus();
-  }
-})
+if(submit) {
+  submit.addEventListener('click', function(e) {
+    if (!searchField.value == "" ) {
+      // Calling my makeRequest function and passing it api url with perameters and apikey.
+      makeRequest(`https:///gateway.marvel.com:443/v1/public/characters?apikey=${apiKey}&name=${searchField.value}&limit=10&offset=0`);
+    } else {
+      alert("Sorry, You left the input blank Please enter a name to search for!");
+      searchField.focus();
+    }
+  });
+
+}
 
 
 // Creating a function to make a request to get the default comics for onload event.
@@ -43,7 +46,7 @@ function defaultRequest(url) {
   request.onload = function() {
     if (request.status >= 200 && request.status < 400) {
       var apiData = JSON.parse(request.responseText)
-      console.log(apiData.data.results);
+      //console.log(apiData.data.results);
       renderDefault(apiData.data.results);
     }
     else {
@@ -61,7 +64,7 @@ request.send();
 // Loops through each comic found and performs api call for each with addBookInfoToPageFromUrl function.
 function renderDefault(characters) {
   characters.forEach( (character, index, array) => {
-    console.log(character.name);
+    //console.log(character.name);
 
     var bookInfoUrl = "";
     var newBookUrl = "";
@@ -91,7 +94,7 @@ function makeRequest(url) {
     if (request.status >= 200 && request.status < 400) {
       // Creating a variable to hold my parsed json data.
       var apiData = JSON.parse(request.responseText)
-      console.log(apiData.data.results);
+      //console.log(apiData.data.results);
       if (apiData.data.results.length > 0) {
         // Calling function to render results
         renderPage(apiData.data.results);
@@ -119,7 +122,7 @@ function renderPage(characters) {
   characters.forEach( (character, index, array) => {
     // Getting the h1 span by id and adding the searched name to it.
     document.getElementById('searchTitle').innerHTML = character.name;
-    console.log(character.name);
+    //console.log(character.name);
     // Creating for loop to add the comics found, but only display a max of 10.
     for (var i = 0; i < character.comics.items.length && i < 10; i++) {
       // To get comics it needs a character id. Calling function that will retrieve the comic covers
@@ -133,11 +136,16 @@ function renderPage(characters) {
   })
 }
 
+
+
 // Need additional info so doing another call to marvel api for comic covers.
 // Creating a function that is passed a url containing my apikey and the characters id.
 function addBookInfoToPageFromUrl(url) {
   // Getting ul element by its id of bookcontainer.
   var bookContainer = document.getElementById('bookContainer');
+
+  if(!bookContainer) return;
+
   // Removing old searched data from bookcontainer if it exists.
   while (bookContainer.hasChildNodes()) {
     bookContainer.removeChild(bookContainer.firstChild);
@@ -156,7 +164,7 @@ function addBookInfoToPageFromUrl(url) {
       // Creating variable to hold an array of all the comic covers
       var comicInfo = comic.data.results[0];
 
-      console.log("Comic Info to build from: ", comicInfo);
+      //console.log("Comic Info to build from: ", comicInfo);
 
       // If the array holds any comic covers this will build an li for it.
       if(comicInfo.images.length > 0) {
