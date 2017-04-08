@@ -9,7 +9,7 @@ var page = document.location.pathname;
 
 // Creating on load event to add default comics to screen when page loads.
 function setup() {
-  defaultRequest(`https:///gateway.marvel.com:443/v1/public/characters?apikey=${apiKey}&name=avengers&limit=10&offset=0`);
+  defaultRequest(`https://gateway.marvel.com:443/v1/public/characters?apikey=${apiKey}&name=avengers&limit=10&offset=0`);
 }
 window.addEventListener("load", setup, true);
 
@@ -28,7 +28,7 @@ if(submit) {
   submit.addEventListener('click', function(e) {
     if (!searchField.value == "" ) {
       // Calling my makeRequest function and passing it api url with perameters and apikey.
-      makeRequest(`https:///gateway.marvel.com:443/v1/public/characters?apikey=${apiKey}&name=${searchField.value}&limit=10&offset=0`);
+      makeRequest(`https://gateway.marvel.com:443/v1/public/characters?apikey=${apiKey}&name=${searchField.value}&limit=10&offset=0`);
     } else {
       alert("Sorry, You left the input blank Please enter a name to search for!");
       searchField.focus();
@@ -66,16 +66,12 @@ function renderDefault(characters) {
   characters.forEach( (character, index, array) => {
     //console.log(character.name);
 
-    var bookInfoUrl = "";
-    var newBookUrl = "";
     // Creating for loop to add the comics found, but only display a max of 10.
     for (var i = 0; i < character.comics.items.length && i < 10; i++) {
       // To get comics it needs a character id. Calling function that will retrieve the comic covers
       //from marvel api and passing it a url with the id and my apikey.
       bookInfoUrl = character.comics.items[i].resourceURI;
-      newBookUrl = bookInfoUrl.replace("http", "https");
-
-      addBookInfoToPageFromUrl(`${newBookUrl}?apikey=${apiKey}`);
+      addBookInfoToPageFromUrl(`${bookInfoUrl}?apikey=${apiKey}`);
     }
   })
 }
@@ -127,11 +123,8 @@ function renderPage(characters) {
     for (var i = 0; i < character.comics.items.length && i < 10; i++) {
       // To get comics it needs a character id. Calling function that will retrieve the comic covers
       //from marvel api and passing it a url with the id and my apikey.
-
       bookInfoUrl = character.comics.items[i].resourceURI;
-      newBookUrl = bookInfoUrl.replace("http", "https");
-
-      addBookInfoToPageFromUrl(`${newBookUrl}?apikey=${apiKey}`);
+      addBookInfoToPageFromUrl(`${bookInfoUrl}?apikey=${apiKey}`);
     }
   })
 }
