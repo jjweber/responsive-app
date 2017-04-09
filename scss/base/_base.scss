@@ -1,11 +1,12 @@
 html body {
   font-family: $font-stack;
-  font-size: 16px;
+  font-size: 10px;
   line-height: 1.5;
   color: $primary-color;
   width: 100%;
   height: 100%;
   margin: 0 auto;
+  padding: 0 auto;
 }
 
 .wrapper {
@@ -13,15 +14,37 @@ html body {
   @extend %auto-center;
 }
 
+@media only screen and (min-width : 480px) {
+  html body {
+    font-size: 12px;
+  }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+  html body {
+    font-size: 14px;
+  }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+  html body {
+    font-size: 16px;
+  }
+}
+
 header {
   background: url("../assets/marvelHeroes.png") no-repeat center;
   background-size: cover;
   border: 2px solid $primary-color;
   height: 350px;
+  text-align: center;
 }
 
 .logo {
   display: inline-block;
+  margin-top: 5px;
 
   img  {
     width: 45px;
@@ -33,8 +56,78 @@ header {
     color: $secondary-color;
     display: block;
     float: left;
-    margin-top: 0;
+    margin-top: 10px;
   }
+}
+
+/* Important styles */
+#toggle {
+  position: absolute;
+  display: block;
+  top: 0px;
+  right: 20px;
+  z-index: 1000;
+  width: 28px;
+  height: 30px;
+  margin: 25px auto 10px;
+}
+
+#toggle span:after,
+#toggle span:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -9px;
+}
+#toggle span:after{
+  top: 9px;
+}
+#toggle span {
+  position: relative;
+  display: block;
+}
+
+#toggle span,
+#toggle span:after,
+#toggle span:before {
+  width: 100%;
+  height: 5px;
+  background-color: #EEE;
+  transition: all 0.3s;
+  backface-visibility: hidden;
+  border-radius: 2px;
+}
+
+/* on activation */
+#toggle.on span {
+  background-color: transparent;
+}
+#toggle.on span:before {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+#toggle.on span:after {
+  transform: rotate(-45deg) translate(7px, -8px);
+}
+#toggle.on + #menu {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* menu appearance*/
+#menu {
+  position: absolute;
+  color: #EEE;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  border-radius: 4px;
+  background: black;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .4s;
 }
 
 nav {
@@ -43,7 +136,9 @@ nav {
   z-index: 999;
 }
 
+
 nav ul {
+  background: white;
   text-align: right;
 
   li {
@@ -69,83 +164,87 @@ nav ul li a:hover {
 }
 
 
-
-/*MEDIA QUERY*/
-@media only screen and (min-width : 501px){
-
+nav ul, li, li a {
+  list-style: none;
+  display: block;
+  margin: 0;
+  padding: 0;
 }
 
-@media only screen and (max-width : 500px) {
+nav ul li {
+  float: right;
+  width: 100%;
+  padding: 35px 30px;
+  border-bottom: 2px solid white;
+}
 
-  /* Important styles */
-  #toggle {
-    position: absolute;
-    display: block;
-    top: 0px;
-    right: 20px;
-    z-index: 1000;
-    width: 28px;
-    height: 30px;
-    margin: 30px auto 10px;
-  }
+nav ul li:first-of-type {
+  margin-top: 30px;
+}
 
-  #toggle span:after,
-  #toggle span:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: -9px;
-  }
-  #toggle span:after{
-    top: 9px;
-  }
-  #toggle span {
-    position: relative;
-    display: block;
-  }
+nav ul li:last-of-type {
+  border-bottom: none;
+}
 
-  #toggle span,
-  #toggle span:after,
-  #toggle span:before {
-    width: 100%;
-    height: 5px;
-    background-color: #888;
-    transition: all 0.3s;
-    backface-visibility: hidden;
-    border-radius: 2px;
+nav li a {
+  font-size: 25px;
+}
+
+li a {
+  padding: 5px;
+  color: #EEE;
+  text-decoration: none;
+}
+li a:hover,
+li a:focus {
+  background: #1ABC9C;
+  color: #fff;
+}
+
+
+@media only screen and (min-width : 480px) {
+
+  .logo h1 {
+    margin-top: 5px;
   }
 
-  /* on activation */
-  #toggle.on span {
-    background-color: transparent;
-  }
-  #toggle.on span:before {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-  #toggle.on span:after {
-    transform: rotate(-45deg) translate(7px, -8px);
-  }
-  #toggle.on + #menu {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  /* menu appearance*/
   #menu {
-    position: absolute;
-    display: block;
-    color: #222;
-    width: 100%;
-    top: 0;
-    left: 0;
-    margin: auto;
-    text-align: center;
-    border-radius: 4px;
     background: black;
-    box-shadow: 0 1px 8px rgba(0,0,0,0.05);
     opacity: 0;
     visibility: hidden;
     transition: opacity .4s;
+  }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+  header {
+    text-align: justify;
+  }
+  #toggle {
+    display: none;
+  }
+
+  .logo h1 {
+    color: $secondary-color;
+    display: block;
+    float: left;
+    margin-top: 2.5px;
+  }
+
+  #menu {
+    display: block;
+    background: rgba(255, 255, 255, 0.02);
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .9999s;
+    position: static;
+    color: #EEE;
+    top: 0;
+    left: 0;
+    margin: auto;
+    border-radius: none;
+    box-shadow: rgba(255, 255, 255, 0.02);
   }
 
   nav ul, li, li a {
@@ -155,56 +254,59 @@ nav ul li a:hover {
     padding: 0;
   }
 
-  nav ul li {
-    float: right;
-    width: 100%;
-    padding: 35px 30px;
-    border-bottom: 2px solid white;
-  }
-
   nav ul li:first-of-type {
-    margin-top: 30px;
+    margin-top: 0;
   }
 
-  nav ul li:last-of-type {
-    border-bottom: none;
+  nav ul {
+    background: rgba(255, 255, 255, 0.0);
+    text-align: right;
+
+    li {
+      clear: both;
+      display: inline-block;
+      margin: 0 auto;
+      border-bottom: none;
+      float: none;
+      width: 50px;
+      padding: 15px 20px;
+
+      a {
+        font-size: 20px;
+        text-decoration: none;
+        padding: 0;
+      }
+      nav ul li a:last-of-type {
+        padding-right: -10px;
+      }
+    }
   }
 
-  nav li a {
-    font-size: 25px;
-  }
-
-  li a {
-    padding: 5px;
-    color: #EEE;
-    text-decoration: none;
-    transition: all .2s;
-  }
-  li a:hover,
-  li a:focus {
-    background: #1ABC9C;
-    color: #fff;
+  nav ul li a:hover {
+      border: none;
+      color: $accent-color;
   }
 }
 
-
-/*MEDIA QUERY*/
-/*@media only screen and (max-width : 430px) {
-  nav {
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+  .logo h1 {
     margin-top: 0;
-    float: right;
   }
 
   nav ul {
     text-align: right;
 
     li {
-      display: block;
-      margin: 0 auto;
+      padding: 15px 20px;
     }
   }
+}
 
-}*/
+
+/*MEDIA QUERY*/
+
+
 
 footer {
   background-color: $primary-color;
@@ -218,14 +320,16 @@ footer {
   }
 }
 
-@media only screen and (max-width : 720px){
+@media only screen and (min-width : 480px) {
 
 }
 
-@media only screen and (min-width : 720px) and (max-width : 1050px){
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
 
 }
 
-@media only screen and (min-width : 1050px){
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
 
 }

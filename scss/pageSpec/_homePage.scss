@@ -6,7 +6,6 @@
 
 .search-wrapper {
   text-align: center;
-  width: 60%;
   z-index: 998;
   margin-top: $large-amount;
   @extend %auto-center;
@@ -96,17 +95,53 @@ li img {
 }
 
 
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+  .search-wrapper {
+    width: 100%;
+  }
+  .search-wrapper p {
+    width: 93%;
+    font-size: 12px;
+  }
+  #textarea {
+    width: 93%;
+  }
+  .js-search-button {
+    right: 10px;
+  }
+
+  #homeContent h1 {
+    //width: 100%;
+    font-size: 12px;
+  }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+  .search-wrapper {
+    width: 60%;
+  }
+}
+
+
 /*
-@media only screen and (min-width : 720px) and (max-width : 1050px){
-  body {
-    background-color: blue;
+@mixin mquery($size) {
+  if $size == small {
+    @media (min-width: 30em) {
+      @content;
+    }
   }
-}
 
-@media only screen and (min-width : 1050px){
-  body {
-    background-color: green;
+  else if $size == medium {
+    @media (min-width: 40em) {
+      @content;
+    }
   }
-}
-
-*/
+}*/
