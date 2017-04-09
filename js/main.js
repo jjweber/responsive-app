@@ -1,17 +1,91 @@
+// This gets rid of only available in ES6 warning.
+/*jshint esversion: 6 */
 // Variables
 var submit = document.querySelector('.js-search-button');
 var searchField = document.querySelector('.js-search-field');
+var mobileToggle = document.querySelector('.c-hamburger');
 //var resultEl = document.querySelector('.results');
 var apiKey = "89629247aa3c362dd969166b19dec207";
+var bookInfoUrl = "";
+var w = parseInt(window.innerWidth);
+var x = document.querySelector(".nav");
+var theToggle = document.getElementById('toggle');
 
-// Defining a variable to hold the location of which page you are on.
-var page = document.location.pathname;
+/*function myFunction() {
+  var w = parseInt(window.innerWidth);
+  var x = document.querySelector(".nav");
+  if (w <= 500) {
+    //max-width 500px
+    console.log(w);
+    if (x.style.display === 'block') {
+        x.style.display = 'none';
+    } else {
+        x.style.display = 'block';
+    }
+  } else if (w > 500) {
+      x.style.display = 'block';
+  }
+}*/
 
 // Creating on load event to add default comics to screen when page loads.
 function setup() {
   defaultRequest(`https://gateway.marvel.com:443/v1/public/characters?apikey=${apiKey}&name=avengers&limit=10&offset=0`);
 }
 window.addEventListener("load", setup, true);
+
+
+/*TOGGLE EVENT*/
+// hasClass
+function hasClass(elem, className) {
+	return new RegExp(' ' + className + ' ').test(' ' + elem.className + ' ');
+}
+// addClass
+function addClass(elem, className) {
+    if (!hasClass(elem, className)) {
+    	elem.className += ' ' + className;
+    }
+}
+// removeClass
+function removeClass(elem, className) {
+	var newClass = ' ' + elem.className.replace( /[\t\r\n]/g, ' ') + ' ';
+	if (hasClass(elem, className)) {
+        while (newClass.indexOf(' ' + className + ' ') >= 0 ) {
+            newClass = newClass.replace(' ' + className + ' ', ' ');
+        }
+        elem.className = newClass.replace(/^\s+|\s+$/g, '');
+    }
+}
+// toggleClass
+function toggleClass(elem, className) {
+	var newClass = ' ' + elem.className.replace( /[\t\r\n]/g, " " ) + ' ';
+    if (hasClass(elem, className)) {
+        while (newClass.indexOf(" " + className + " ") >= 0 ) {
+            newClass = newClass.replace( " " + className + " " , " " );
+        }
+        elem.className = newClass.replace(/^\s+|\s+$/g, '');
+    } else {
+        elem.className += ' ' + className;
+    }
+}
+
+if (theToggle) {
+  theToggle.onclick = function() {
+     toggleClass(this, 'on');
+     return false;
+  }
+}
+/*END EVENT*/
+
+
+function sizeChecker() {
+  console.log("Resizing", w);
+  if (w <= 500) {
+    console.log("I am at 500px");
+  } else if (w >= 501) {
+    console.log("I am Bigger than That!!!!");
+  }
+}
+window.addEventListener("resize", sizeChecker);
 
 
 // Creating a keyup event to handle a case where the user presses enter instead of clicking the button.
@@ -37,7 +111,6 @@ if(submit) {
 
 }
 
-
 // Creating a function to make a request to get the default comics for onload event.
 function defaultRequest(url) {
   var request = new XMLHttpRequest();
@@ -45,17 +118,17 @@ function defaultRequest(url) {
 
   request.onload = function() {
     if (request.status >= 200 && request.status < 400) {
-      var apiData = JSON.parse(request.responseText)
+      var apiData = JSON.parse(request.responseText);
       //console.log(apiData.data.results);
       renderDefault(apiData.data.results);
     }
     else {
       console.log('response error', request);
     }
-  }
+  };
   request.onerror = function() {
   console.log('connection error');
-}
+};
 
 request.send();
 }
@@ -71,9 +144,10 @@ function renderDefault(characters) {
       // To get comics it needs a character id. Calling function that will retrieve the comic covers
       //from marvel api and passing it a url with the id and my apikey.
       bookInfoUrl = character.comics.items[i].resourceURI;
+
       addBookInfoToPageFromUrl(`${bookInfoUrl}?apikey=${apiKey}`);
     }
-  })
+  });
 }
 
 
@@ -89,7 +163,7 @@ function makeRequest(url) {
     // If it recieves a request between 200 and 400 it will continue.
     if (request.status >= 200 && request.status < 400) {
       // Creating a variable to hold my parsed json data.
-      var apiData = JSON.parse(request.responseText)
+      var apiData = JSON.parse(request.responseText);
       //console.log(apiData.data.results);
       if (apiData.data.results.length > 0) {
         // Calling function to render results
@@ -104,10 +178,10 @@ function makeRequest(url) {
     else {
       console.log('response error', request);
     }
-  }
+  };
   request.onerror = function() {
     console.log('connection error');
-  }
+  };
 
   request.send();
 }
@@ -119,14 +193,17 @@ function renderPage(characters) {
     // Getting the h1 span by id and adding the searched name to it.
     document.getElementById('searchTitle').innerHTML = character.name;
     //console.log(character.name);
+
     // Creating for loop to add the comics found, but only display a max of 10.
     for (var i = 0; i < character.comics.items.length && i < 10; i++) {
       // To get comics it needs a character id. Calling function that will retrieve the comic covers
       //from marvel api and passing it a url with the id and my apikey.
+
       bookInfoUrl = character.comics.items[i].resourceURI;
+
       addBookInfoToPageFromUrl(`${bookInfoUrl}?apikey=${apiKey}`);
     }
-  })
+  });
 }
 
 
@@ -178,10 +255,10 @@ function addBookInfoToPageFromUrl(url) {
     else {
       console.log('response error', request);
     }
-  }
+  };
   request.onerror = function() {
     console.log('connection error');
-  }
+  };
 
   request.send();
 }

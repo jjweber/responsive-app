@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- If using this local comment out this meta. This is to handle Mixed content error on github page. -->
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>Marvel API Search App</title>
     <link href="./css/main.css" rel="stylesheet" />
@@ -14,14 +15,19 @@
           <img src="./assets/shield.jpg" alt="">
           <h1>Shield</h1>
         </div>
-        <nav>
-          <div class="hamburger-menu">IMG</div>
-          <ul class="nav">
-            <li><a href="./" class="active">Home</a></li>
-            <li><a href="./about.html">About</a></li>
-            <li><a href="./contact.html">Contact</a></li>
+
+        <!-- nav-menu -->
+        <a href="#menu" id="toggle"><span></span></a>
+
+        <nav id="menu">
+          <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
         </nav>
+        <!-- End nav-menu -->
+
         <div class="search-wrapper">
           <p>Search for comics with your favorite marvel characters.</p>
           <input id= "textarea" class="js-search-field" type="text" onfocus="this.select();" placeholder="e.g. Spider-man..." />
