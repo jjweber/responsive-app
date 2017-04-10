@@ -155,7 +155,6 @@ nav ul {
 }
 
 nav ul li a:hover {
-    border: 1px solid $secondary-color;
     color: $accent-color;
 }
 
@@ -194,11 +193,6 @@ li a {
   padding: 5px;
   color: #EEE;
   text-decoration: none;
-}
-li a:hover,
-li a:focus {
-  background: #1ABC9C;
-  color: #fff;
 }
 
 

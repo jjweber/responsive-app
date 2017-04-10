@@ -11,21 +11,7 @@ var w = parseInt(window.innerWidth);
 var x = document.querySelector(".nav");
 var theToggle = document.getElementById('toggle');
 
-/*function myFunction() {
-  var w = parseInt(window.innerWidth);
-  var x = document.querySelector(".nav");
-  if (w <= 500) {
-    //max-width 500px
-    console.log(w);
-    if (x.style.display === 'block') {
-        x.style.display = 'none';
-    } else {
-        x.style.display = 'block';
-    }
-  } else if (w > 500) {
-      x.style.display = 'block';
-  }
-}*/
+
 
 // Creating on load event to add default comics to screen when page loads.
 function setup() {
