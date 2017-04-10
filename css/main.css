@@ -4,7 +4,7 @@
 
 html body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 10px;
+  font-size: 14px;
   line-height: 1.5;
   color: #222;
   width: 100%;
@@ -17,7 +17,7 @@ html body {
 
 @media only screen and (min-width: 480px) {
   html body {
-    font-size: 12px; } }
+    font-size: 16px; } }
 
 /* Small Devices, Tablets */
 @media only screen and (min-width: 768px) {
@@ -47,7 +47,7 @@ header {
     color: #EEE;
     display: block;
     float: left;
-    margin-top: 10px; }
+    margin-top: 2.5px; }
 
 /* Important styles */
 #toggle {
@@ -166,7 +166,7 @@ li a {
 
 @media only screen and (min-width: 480px) {
   .logo h1 {
-    margin-top: 5px; }
+    margin-top: 0; }
   #menu {
     background: black;
     opacity: 0;
@@ -234,7 +234,6 @@ li a {
     nav ul li {
       padding: 15px 20px; } }
 
-/*MEDIA QUERY*/
 footer {
   background-color: #222;
   color: #EEE;
@@ -274,7 +273,7 @@ footer {
   width: 100%;
   text-align: center;
   z-index: 997;
-  margin-top: 50px; }
+  margin-top: 100px; }
   .search-wrapper p {
     background-color: #222;
     color: #EEE;
@@ -311,6 +310,10 @@ footer {
     background-color: #0d3e6a;
     /* DarkBlue */
     color: white; }
+
+#homeContent h1 {
+  text-align: center;
+  max-width: 100%; }
 
 #homeContent ul .section-children li.layout {
   display: inline-block;
@@ -371,13 +374,12 @@ li img {
       height: 225px; }
       #homeContent ul li h3 {
         display: block;
-        float: right;
         height: 82%;
         background-color: #222;
         color: #FFDF00;
         padding: 20px 10px;
         text-align: center;
-        overflow: hidden; }
+        white-space: pre-line; }
   li img {
     display: block;
     float: left;
@@ -394,20 +396,22 @@ li img {
     max-width: 65%; }
     .search-wrapper p {
       text-align: left;
-      max-width: 100%;
-      margin: 0;
+      max-width: 50%;
+      margin-left: 2%;
       padding: 0; }
   .js-search-field {
     width: 100%;
     height: auto; }
   .js-search-button {
-    position: -webkit-sticky;
-    position: sticky;
+    position: absolute;
     background-size: 20px;
     height: 35px;
     bottom: 10px;
-    right: -17px;
+    right: 3%;
     padding: 0 20px; }
+  #homeContent h1 {
+    text-align: left;
+    max-width: 60%; }
   #homeContent ul .section-children li.layout {
     display: block;
     height: 100%;
@@ -442,7 +446,6 @@ li img {
     margin-top: 50px;
     margin-bottom: 20px; } }
 
-/* Large Devices, Wide Screens */
 #aboutContent p {
   width: 65%; }
 

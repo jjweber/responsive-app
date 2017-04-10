@@ -3,12 +3,9 @@
 // Variables
 var submit = document.querySelector('.js-search-button');
 var searchField = document.querySelector('.js-search-field');
-var mobileToggle = document.querySelector('.c-hamburger');
 //var resultEl = document.querySelector('.results');
 var apiKey = "89629247aa3c362dd969166b19dec207";
 var bookInfoUrl = "";
-var w = parseInt(window.innerWidth);
-var x = document.querySelector(".nav");
 var theToggle = document.getElementById('toggle');
 
 
@@ -58,20 +55,9 @@ if (theToggle) {
   theToggle.onclick = function() {
      toggleClass(this, 'on');
      return false;
-  }
+  };
 }
 /*END EVENT*/
-
-
-function sizeChecker() {
-  console.log("Resizing", w);
-  if (w <= 500) {
-    console.log("I am at 500px");
-  } else if (w >= 501) {
-    console.log("I am Bigger than That!!!!");
-  }
-}
-window.addEventListener("resize", sizeChecker);
 
 
 // Creating a keyup event to handle a case where the user presses enter instead of clicking the button.
